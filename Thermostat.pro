@@ -4,7 +4,6 @@ CONFIG += c++11
 
 SOURCES += main.cpp \
     theromstatobj.cpp \
-    thermostatschedule.cpp \
     thermostatevent.cpp
 
 RESOURCES += qml.qrc
@@ -19,5 +18,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     theromstatobj.h \
-    thermostatschedule.h \
     thermostatevent.h

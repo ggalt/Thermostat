@@ -1,6 +1,6 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.0
+import QtQuick.Layouts 1.1
 
 ApplicationWindow {
     id: applicationWindow1
@@ -17,6 +17,7 @@ ApplicationWindow {
         }
 
         Page2 {
+            objectName: "Page2"
         }
         onCurrentIndexChanged: {
             pageIndicator.currentIndex = swipeView.currentIndex;

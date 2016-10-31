@@ -65,21 +65,26 @@ Rectangle {
     }
 
     Slider {
-        id: slider1
+        id: sliderTemp
         x: 0
         y: 206
         width: 320
         height: 26
         value: 0.5
+
+        onXChanged: {
+            targetTemp.m_targetTemp = value
+        }
     }
 
     Label {
         id: targetTemp
+        property int m_targetTemp: 70
         x: 206
         y: 107
         width: 106
         height: 85
-        text: qsTr("70")
+        text: m_targetTemp
         font.pointSize: 40
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
