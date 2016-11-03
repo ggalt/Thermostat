@@ -4,23 +4,27 @@
 #include <QList>
 #include <QObject>
 #include <QDebug>
-#include "theromstatobj.h"
+#include "thermostatobj.h"
 
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
-    QQmlApplicationEngine engine;
-    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+//    QQmlApplicationEngine engine;
+//    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
 
-    theromStatObj *thermo = new theromStatObj();
-    QList<QObject*> rootList = engine.rootObjects();
-    qDebug() << rootList.at(0)->children().count();
-    for(int i = 0; i < rootList.at(0)->children().count(); i++)
-        qDebug() << rootList.at(0)->children().at(i)->objectName();
+    thermoStatObj *thermo = new thermoStatObj();
+    thermo->Init();
+    int retVal = app.exec();
+    return retVal;
 
-    thermo->Init(engine.rootContext(), engine.rootObjects().first());
+    //    QList<QObject*> rootList = engine.rootObjects();
+//    qDebug() << rootList.at(0)->children().count();
+//    for(int i = 0; i < rootList.at(0)->children().count(); i++)
+//        qDebug() << rootList.at(0)->children().at(i)->objectName();
 
-    return app.exec();
+//    thermo->Init(engine.rootContext(), engine.rootObjects().first());
+
+//    return app.exec();
 }

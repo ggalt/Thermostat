@@ -1,20 +1,22 @@
 #ifndef THEROMSTATOBJ_H
 #define THEROMSTATOBJ_H
 
-#include <QObject>
+#include <QQuickView>
 #include <QList>
 #include <QQmlContext>
 
 
+#include "thermoeventwindow.h"
 #include "thermostatevent.h"
 
-class theromStatObj : public QObject
+class thermoStatObj : public QQuickView
 {
     Q_OBJECT
 public:
-    explicit theromStatObj(QObject *parent = 0);
+    explicit thermoStatObj(QWindow *parent = 0);
+    ~thermoStatObj(void);
 
-    void Init(QQmlContext *q, QObject *rootObject);
+    void Init(void);
 
 signals:
 

@@ -3,8 +3,9 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    theromstatobj.cpp \
-    thermostatevent.cpp
+    thermostatobj.cpp \
+    thermostatevent.cpp \
+    thermoeventwindow.cpp
 
 RESOURCES += qml.qrc
 
@@ -17,5 +18,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    theromstatobj.h \
-    thermostatevent.h
+    thermostatobj.h \
+    thermostatevent.h \
+    thermoeventwindow.h

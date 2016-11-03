@@ -2,7 +2,8 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
 
-ApplicationWindow {
+//ApplicationWindow {
+Rectangle {
     id: applicationWindow1
     visible: true
     width: 320
