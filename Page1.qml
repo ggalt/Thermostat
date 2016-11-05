@@ -3,7 +3,7 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
 
 Rectangle {
-    id: rectangle1
+    id: page1Rectangle
     height: 240
     width: 320
     property string degreeMark: String.fromCharCode(176)
@@ -28,13 +28,21 @@ Rectangle {
         id: targetTemp
 //        x: 294
         width: 40
-        text: "70"+rectangle1.degreeMark
+        property int targetTempVal: swPage1.targetTemp
+
+        text: targetTempVal+page1Rectangle.degreeMark
         anchors.top: parent.top
         anchors.topMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
         font.pointSize: 20
         horizontalAlignment: Text.AlignHCenter
+
+        MouseArea {
+            id: quickTempChange
+            anchors.fill: parent
+            onClicked: quickTempChangePopup.open()
+        }
     }
 
     Label {
@@ -52,9 +60,10 @@ Rectangle {
 
     Label {
         id: currentTemp
+        property int currentTempVal: swPage1.curTemp
 //        x: 152
 //        y: 108
-        text: "70"+rectangle1.degreeMark+"F"
+        text: currentTempVal+page1Rectangle.degreeMark+"F"
         font.pointSize: 80
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
@@ -102,7 +111,7 @@ Rectangle {
 
     Label {
         id: outsideTemp
-        text: "70"+rectangle1.degreeMark
+        text: "70"+page1Rectangle.degreeMark
         font.pointSize: 18
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignLeft
@@ -111,4 +120,4 @@ Rectangle {
         anchors.left: image1.right
         anchors.leftMargin: 0
     }
-}
+ }
