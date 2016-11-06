@@ -1,13 +1,15 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>Page1.qml</file>
-        <file>Page2.qml</file>
-        <file>Sun-40.png</file>
-        <file>Sun-60.png</file>
-        <file>Sun-80.png</file>
-        <file>Sun-120.png</file>
-        <file>Sun-full.png</file>
-        <file>ThermostatEventPage.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/Page1.qml</file>
+        <file>qml/Page2.qml</file>
+        <file>qml/ThermostatEventPage.qml</file>
+        <file>images/Sun-40.png</file>
+        <file>images/Sun-60.png</file>
+        <file>images/Sun-80.png</file>
+        <file>images/Sun-120.png</file>
+        <file>images/Sun-full.png</file>
+        <file>fonts/OpenSans-Regular.ttf</file>
+        <file>qml/CheckableStateButton.qml</file>
     </qresource>
 </RCC>

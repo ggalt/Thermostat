@@ -102,11 +102,12 @@ Rectangle {
         id: image1
         width: 80
         height: 80
+        fillMode: Image.PreserveAspectFit
         anchors.left: parent.left
         anchors.leftMargin: 0
         anchors.top: parent.top
         anchors.topMargin: 0
-        source: "Sun-80.png"
+        source: "../images/Sun-80.png"
     }
 
     Label {

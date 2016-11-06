@@ -4,6 +4,8 @@
 #include <QDebug>
 #include <QObject>
 #include <QString>
+#include <QQmlEngine>
+#include <QQmlContext>
 
 #include "thermostatobj.h"
 
@@ -19,20 +21,22 @@ thermoStatObj::~thermoStatObj(void)
 
 void thermoStatObj::Init(void)
 {
-    setSource((QUrl(QLatin1String("qrc:/main.qml"))));
+    this->engine()->rootContext()->setContextProperty("thermoObj", this);
+    setSource((QUrl(QLatin1String("qrc:/qml/main.qml"))));
+//    setSource(QUrl(QLatin1String("qrc:/qml/ThermostatEventPage.qml")));
     show();
 }
 
 
-void thermoStatObj::CreateNewThermoEvent(void)
+void thermoStatObj::createNewThermoEvent(void)
 {
     qDebug() << "Success!!";
-    QQuickView *view = new QQuickView;
-    view->setSource(QUrl(QLatin1String("qrc:/ThermostatEventPage.qml")));
-    view->show();
+
+    thermoEvent = new thermoEventWindow(this);
+    thermoEvent->Init();
 }
 
-void thermoStatObj::AddNewThermoEvent(void)
+void thermoStatObj::addNewThermoEvent(void)
 {
 
 }

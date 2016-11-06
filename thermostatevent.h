@@ -38,12 +38,12 @@ public:
     DayOfTheWeek dayOfTheWeek(void) { return m_DOW; }
     QTime startTime(void) {return m_startTime; }
 
-    void setCoolingState(CoolingState c) { m_coolingState = c; }
-    void setFanState(FanState f) { m_fanState = f; }
-    void setSwitchState(SwitchState s) { m_switchState = s; }
-    void setTargetTemp(int t) {m_targetTemp = t; }
-    void setDayOfTheWeek(DayOfTheWeek d) { m_DOW = d; }
-    void setStartTime(QTime t) { m_startTime = t; }
+    Q_INVOKABLE void setCoolingState(CoolingState c) { m_coolingState = c; }
+    Q_INVOKABLE void setFanState(FanState f) { m_fanState = f; }
+    Q_INVOKABLE void setSwitchState(SwitchState s) { m_switchState = s; }
+    Q_INVOKABLE void setTargetTemp(int t) {m_targetTemp = t; }
+    Q_INVOKABLE void setDayOfTheWeek(DayOfTheWeek d) { m_DOW = d; }
+    Q_INVOKABLE void setStartTime(QTime t) { m_startTime = t; }
 
 signals:
     void coolingStateChanged();

@@ -21,3 +21,12 @@ HEADERS += \
     thermostatobj.h \
     thermostatevent.h \
     thermoeventwindow.h
+OTHER_FILES += \
+    qml/main.qml\
+    qml/Page1.qml\
+    qml/Page2.qml\
+    qml/ThermostatEventPage.qml\
+    qml.qrc
+
+DISTFILES += \
+    qml/CheckableStateButton.qml

@@ -21,12 +21,13 @@ public:
 signals:
 
 public slots:
-    void CreateNewThermoEvent(void);
-    void AddNewThermoEvent(void);
+    Q_INVOKABLE void createNewThermoEvent(void);
+    Q_INVOKABLE void addNewThermoEvent(void);
 
 private:
     QQmlContext *myRootContext;
 
+    thermoEventWindow *thermoEvent;
     QList<thermostatEvent> m_thermoEventList;
 
 };

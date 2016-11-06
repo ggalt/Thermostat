@@ -11,6 +11,10 @@ Rectangle {
 
     signal addThermoEventSignal()
 
+    function addThermoEvent() {
+        thermoObj.createNewThermoEvent()
+    }
+
     function uncheckDays() {
         btnSaturday.highlighted = false;
         btnSunday.highlighted = false;
@@ -191,7 +195,8 @@ Rectangle {
             anchors.bottom: parent.bottom
             anchors.left: parent.left
             anchors.top: parent.top
-            onClicked: addEventMainRec.addThermoEventSignal()
+//            onClicked: addEventMainRec.addThermoEventSignal()
+            onClicked: addEventMainRec.addThermoEvent()
         }
     }   // End dayEvents
 
