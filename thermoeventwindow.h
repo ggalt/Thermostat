@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QQuickView>
+#include <QQmlComponent>
+
 
 #include "thermostatevent.h"
 
@@ -21,6 +23,7 @@ public slots:
 
 private:
     thermostatEvent *theEvent;
+    QQmlComponent *theComponent;
 
 };
 

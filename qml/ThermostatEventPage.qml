@@ -11,9 +11,9 @@ Rectangle {
     height: 240
     property string degreeMark: String.fromCharCode(176)
 
-    property alias dayOfWeek: tmblDayOfWeek.model
-    property alias hour: tmblHour.model
-    property alias minute: tmblMinute.model
+    property alias dayOfWeek: tmblDayOfWeek.dayResult
+    property alias hour: tmblHour.hourResult
+    property alias minute: tmblMinute.minuteResult
     property alias targetTemp: sliderTemp.value
     property int fanState
     property int heatState
@@ -39,7 +39,12 @@ Rectangle {
      }
 
     function acceptData() {
+        /// set target temperature
         thermostatEvent.setTargetTemp(thermostatEventRec.targetTemp)
+        console.log("Target temp is:", targetTemp)
+        console.log("Fan state is:", fanState)
+        console.log("Heat state is:", heatState)
+
 
         /// FAN
         if(fanState==1) // fan is set to "ON"
@@ -54,6 +59,7 @@ Rectangle {
             thermostatEvent.setCoolingState(thermostatEvent.Heat)
 
         // DAY OF WEEK
+        console.log("Entering switch statement with day of week set to:", dayOfWeek)
         switch (dayOfWeek) {
             case "SUN": {
                 thermostatEvent.setDayOfTheWeek(thermostatEvent.Sunday)
@@ -84,6 +90,7 @@ Rectangle {
             }
             break;
         }
+        console.log("day of week", dayOfWeek)
         thermostatEventRec.accepted()
     }
 
@@ -146,7 +153,6 @@ Rectangle {
         anchors.topMargin: 6
 
         readonly property real delegateTextMargins: characterMetrics.width * 1.5
-        readonly property var days: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
         OldControls.Label {
             id: characterMetrics
@@ -161,18 +167,23 @@ Rectangle {
             id: tmblDayOfWeek
             width: characterMetrics.width * 3 + tmblEventTime.delegateTextMargins
             model: ["SUN","MON","TUE","WED","THU","FRI","SAT"]
+            property string dayResult: tmblDayOfWeek.model[currentIndex]
         }
+
         TumblerColumn {
             id: tmblHour
             width: characterMetrics.width * 5 + tmblEventTime.delegateTextMargins
             model: ["00AM:","01AM:","02AM:","03AM:","04AM:","05AM:","06AM:","07AM:","08AM:","09AM:","10AM:","11AM:",
                     "12PM:","01PM:","02PM:","03PM:","04PM:","05PM:","06PM:","07PM:","08PM:","09PM:","10PM:","11PM:"]
+
+            property string hourResult: tmblHour.model[currentIndex]
         }
 
         TumblerColumn {
             id: tmblMinute
             width: characterMetrics.width * 2 + tmblEventTime.delegateTextMargins
             model: ["00","05","10","15","20","25","30","35","40","45","50","55"]
+            property string minuteResult: tmblMinute.model[currentIndex]
         }
     }
 
