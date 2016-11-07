@@ -104,8 +104,7 @@ void thermoEventWindow::acceptResult(void)
                 theEvent->dayOfTheWeek() << "Target temp:" << theEvent->targetTemp() <<
                 "Fan State:" << theEvent->fanState() << "Heat State:" << theEvent->coolingState();
 
-
-
+    emit addEvent(theEvent);
     this->deleteLater();
 }
 

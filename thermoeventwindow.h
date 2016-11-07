@@ -17,6 +17,9 @@ public:
 
     void Init(void);
 
+signals:
+    void addEvent( thermostatEvent *e );
+
 public slots:
     void acceptResult(void);
     void cancelResult(void);

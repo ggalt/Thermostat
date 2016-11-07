@@ -5,7 +5,8 @@ CONFIG += c++11
 SOURCES += main.cpp \
     thermostatobj.cpp \
     thermostatevent.cpp \
-    thermoeventwindow.cpp
+    thermoeventwindow.cpp \
+    thermoeventlistmodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -20,7 +21,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     thermostatobj.h \
     thermostatevent.h \
-    thermoeventwindow.h
+    thermoeventwindow.h \
+    thermoeventlistmodel.h
 OTHER_FILES += \
     qml/main.qml\
     qml/Page1.qml\

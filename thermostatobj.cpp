@@ -6,6 +6,7 @@
 #include <QString>
 #include <QQmlEngine>
 #include <QQmlContext>
+#include <QDebug>
 
 #include "thermostatobj.h"
 
@@ -33,10 +34,20 @@ void thermoStatObj::createNewThermoEvent(void)
     qDebug() << "Success!!";
 
     thermoEvent = new thermoEventWindow(this);
+    connect(thermoEvent,SIGNAL(addEvent(thermostatEvent *)),
+            this,SLOT(addEvent(thermostatEvent *)));
+
     thermoEvent->Init();
 }
 
 void thermoStatObj::addNewThermoEvent(void)
 {
 
+}
+
+
+void thermoStatObj::addEvent( thermostatEvent *e)
+{
+    m_thermoEventList.append(e);
+    qDebug() << "Event List" << m_thermoEventList.at(m_thermoEventList.count()-1)->dayOfTheWeek();
 }
