@@ -2,7 +2,6 @@
 #define THERMOEVENTLISTMODEL_H
 
 #include <QObject>
-#include <QtCore>
 #include <QAbstractListModel>
 #include <QModelIndex>
 #include <QModelIndexList>

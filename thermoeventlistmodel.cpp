@@ -26,7 +26,9 @@ QVariant thermoEventListModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    return m_data.value(row);
+    QVariant retVal = QVariant::fromValue( m_data.value(row) );
+
+    return retVal;
 }
 
 int thermoEventListModel::addEvent(thermostatEvent *event)

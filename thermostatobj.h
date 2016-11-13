@@ -8,6 +8,7 @@
 
 #include "thermoeventwindow.h"
 #include "thermostatevent.h"
+#include "thermoeventlistmodel.h"
 
 class thermoStatObj : public QQuickView
 {
@@ -31,6 +32,7 @@ private:
 
     thermoEventWindow *thermoEvent;
     QList<thermostatEvent*> m_thermoEventList;
+    thermoEventListModel *m_eventListModel;
 
 };
 
