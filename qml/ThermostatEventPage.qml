@@ -77,7 +77,7 @@ Rectangle {
                 thermostatEvent.setDayOfTheWeek(thermostatEvent.Wednesday)
             }
             break;
-            case "THU": {
+            case "THUR": {
                 thermostatEvent.setDayOfTheWeek(thermostatEvent.Thursday)
             }
             break;
@@ -87,6 +87,18 @@ Rectangle {
             break;
             case "SAT": {
                 thermostatEvent.setDayOfTheWeek(thermostatEvent.Saturday)
+            }
+            break;
+            case "ALL": {
+                thermostatEvent.setDayOfTheWeek(thermostatEvent.AllWeek)
+            }
+            break;
+            case "WKND": {
+                thermostatEvent.setDayOfTheWeek(thermostatEvent.Weekend)
+            }
+            break;
+            case "WDYS": {
+                thermostatEvent.setDayOfTheWeek(thermostatEvent.WeekDays)
             }
             break;
         }
@@ -166,7 +178,7 @@ Rectangle {
         TumblerColumn {
             id: tmblDayOfWeek
             width: characterMetrics.width * 3 + tmblEventTime.delegateTextMargins
-            model: ["SUN","MON","TUE","WED","THU","FRI","SAT"]
+            model: ["SUN","MON","TUE","WED","THUR","FRI","SAT","ALL","WKND","WDYS"]
             property string dayResult: tmblDayOfWeek.model[currentIndex]
         }
 

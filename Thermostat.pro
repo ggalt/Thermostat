@@ -31,4 +31,5 @@ OTHER_FILES += \
     qml.qrc
 
 DISTFILES += \
-    qml/CheckableStateButton.qml
+    qml/CheckableStateButton.qml \
+    qml/thermoEventDelegate.qml

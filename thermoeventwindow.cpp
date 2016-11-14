@@ -78,15 +78,26 @@ void thermoEventWindow::acceptResult(void)
     else if( dayOfWeek == "WED" ) {
         theEvent->setDayOfTheWeek(thermostatEvent::Wednesday);
     }
-    else if( dayOfWeek == "THU" ) {
+    else if( dayOfWeek == "THUR" ) {
             theEvent->setDayOfTheWeek(thermostatEvent::Thursday);
     }
     else if( dayOfWeek == "FRI" ) {
             theEvent->setDayOfTheWeek(thermostatEvent::Friday);
     }
-    else {  //( dayOfWeek == "SAT" )
+    else if ( dayOfWeek == "SAT" ) {
             theEvent->setDayOfTheWeek(thermostatEvent::Saturday);
         }
+    else if( dayOfWeek == "ALL" ) {
+            theEvent->setDayOfTheWeek(thermostatEvent::AllWeek);
+    }
+    else if( dayOfWeek == "WKND" ) {
+            theEvent->setDayOfTheWeek(thermostatEvent::Weekend);
+    }
+    else if( dayOfWeek == "WDYS" ) {
+            theEvent->setDayOfTheWeek(thermostatEvent::WeekDays);
+    } else {
+        qDebug() << "Day of Week out of range";
+    }
 
     QTime t;
 

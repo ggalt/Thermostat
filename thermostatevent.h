@@ -25,7 +25,7 @@ public:
     enum CoolingState { Heat, Cool, Auto };
     enum FanState { FanOn, FanOff, FanAuto };
     enum SwitchState { SwitchOn, SwitchOff };
-    enum DayOfTheWeek { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday };
+    enum DayOfTheWeek { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, AllWeek, Weekend, WeekDays };
     Q_ENUM(CoolingState)
     Q_ENUM(FanState)
     Q_ENUM(SwitchState)
