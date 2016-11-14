@@ -15,16 +15,21 @@
 thermoStatObj::thermoStatObj(QWindow *parent) : QQuickView(parent)
 {
     setObjectName("theromStatObj");
+    m_eventListModel = new thermoEventListModel(this);
 }
 
 thermoStatObj::~thermoStatObj(void)
 {
+    m_eventListModel->deleteLater();
     close();
 }
 
 void thermoStatObj::Init(void)
 {
-    this->engine()->rootContext()->setContextProperty("thermoObj", this);
+    /// note, need to fill m_eventListModel from disk before starting
+
+    engine()->rootContext()->setContextProperty("thermoObj", this);
+    engine()->rootContext()->setContextProperty("thermoEventListModel", m_eventListModel);
     setSource((QUrl(QLatin1String("qrc:/qml/main.qml"))));
 //    setSource(QUrl(QLatin1String("qrc:/qml/ThermostatEventPage.qml")));
     show();
@@ -50,7 +55,10 @@ void thermoStatObj::addNewThermoEvent(void)
 
 void thermoStatObj::addEvent( thermostatEvent *e)
 {
-    thermostatEvent::DayOfTheWeek days[] {thermostatEvent::Monday,thermostatEvent::Tuesday,thermostatEvent::Wednesday,thermostatEvent::Thursday,thermostatEvent::Friday,thermostatEvent::Saturday,thermostatEvent::Sunday};
+    thermostatEvent::DayOfTheWeek days[] {
+                thermostatEvent::Monday,thermostatEvent::Tuesday,
+                thermostatEvent::Wednesday,thermostatEvent::Thursday,
+                thermostatEvent::Friday,thermostatEvent::Saturday,thermostatEvent::Sunday};
     qDebug() << "-------- day of week set to" << e->dayOfTheWeek();
 
     if(e->dayOfTheWeek()==thermostatEvent::WeekDays) {
@@ -67,7 +75,7 @@ void thermoStatObj::addEvent( thermostatEvent *e)
             temp->setFanState(e->fanState());
             temp->setSwitchState(e->switchState());
             temp->setTargetTemp(e->targetTemp());
-            m_thermoEventList.append(temp);
+            m_eventListModel->addEvent(temp);
             qDebug() << "Insert" << temp->dayOfTheWeek() << temp->startTime() << temp->targetTemp() << temp->coolingState();
         }
     } else if(e->dayOfTheWeek()==thermostatEvent::Weekend) {
@@ -84,7 +92,7 @@ void thermoStatObj::addEvent( thermostatEvent *e)
             temp->setFanState(e->fanState());
             temp->setSwitchState(e->switchState());
             temp->setTargetTemp(e->targetTemp());
-            m_thermoEventList.append(temp);
+            m_eventListModel->addEvent(temp);
             qDebug() << "Insert" << temp->dayOfTheWeek() << temp->startTime() << temp->targetTemp() << temp->coolingState();
         }
     } else if(e->dayOfTheWeek()==thermostatEvent::AllWeek) {
@@ -101,11 +109,11 @@ void thermoStatObj::addEvent( thermostatEvent *e)
             temp->setFanState(e->fanState());
             temp->setSwitchState(e->switchState());
             temp->setTargetTemp(e->targetTemp());
-            m_thermoEventList.append(temp);
+            m_eventListModel->addEvent(temp);
             qDebug() << "Insert" << temp->dayOfTheWeek() << temp->startTime() << temp->targetTemp() << temp->coolingState();
         }
     } else {
-        m_thermoEventList.append(e);
+        m_eventListModel->addEvent(e);
     }
-    qDebug() << "Event List" << m_thermoEventList.at(m_thermoEventList.count()-1)->dayOfTheWeek();
+    qDebug() << "Event List count" << m_eventListModel->rowCount(QModelIndex());
 }

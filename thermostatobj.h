@@ -31,7 +31,7 @@ private:
     QQmlContext *myRootContext;
 
     thermoEventWindow *thermoEvent;
-    QList<thermostatEvent*> m_thermoEventList;
+//    QList<thermostatEvent*> m_thermoEventList;
     thermoEventListModel *m_eventListModel;
 
 };

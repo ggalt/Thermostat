@@ -31,6 +31,13 @@ QVariant thermoEventListModel::data(const QModelIndex &index, int role) const
     return retVal;
 }
 
+//QHash<int, QByteArray> thermoEventListModel::roleNames() const {
+
+//    QHash<int, QByteArray> roles;
+//    roles[valueRole]         = "valueRole";
+//    return roles;
+//}
+
 int thermoEventListModel::addEvent(thermostatEvent *event)
 {
     m_data.append(event);

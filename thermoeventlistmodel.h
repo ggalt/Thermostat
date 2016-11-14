@@ -21,8 +21,13 @@ public:
 public:
     virtual int rowCount(const QModelIndex &parent) const;
     virtual QVariant data(const QModelIndex &index, int role) const;
-
+//    virtual QHash<int, QByteArray> thermoEventListModel::roleNames() const;
     int addEvent(thermostatEvent *event);
+
+public:
+    enum Roles {WordRole = Qt::UserRole, CountRole};
+
+
 
 private:
     QList<thermostatEvent*> m_data;
