@@ -9,7 +9,15 @@ Rectangle {
     height: 240
     width: 320
 
-    signal addThermoEventSignal()
+    function selectDay(string day) {
+        switch(day) {
+        case "SU": {
+            uncheckDays();
+            btnSunday.highlighted=true;
+            break;
+        }
+    }
+    }
 
     function addThermoEvent() {
         thermoObj.createNewThermoEvent()
@@ -47,6 +55,7 @@ Rectangle {
             onClicked: {
                 uncheckDays();
                 highlighted = true;
+                thermoObj.daySelected("SU")
             }
         }
 
@@ -64,6 +73,7 @@ Rectangle {
             onClicked: {
                 uncheckDays();
                 highlighted = true;
+                thermoObj.daySelected("MO")
             }
         }
 
@@ -81,6 +91,8 @@ Rectangle {
             onClicked: {
                 uncheckDays();
                 highlighted = true;
+                thermoObj.daySelected("TU")
+
             }
         }
 
@@ -98,6 +110,8 @@ Rectangle {
             onClicked: {
                 uncheckDays();
                 highlighted = true;
+                thermoObj.daySelected("WE")
+
             }
         }
 
@@ -105,7 +119,7 @@ Rectangle {
             id: btnThursday
             width: 45
             height: 45
-            text: qsTr("Th")
+            text: qsTr("TH")
             highlighted: false
             autoExclusive: true
             anchors.left: btnWednesday.right
@@ -115,6 +129,8 @@ Rectangle {
             onClicked: {
                 uncheckDays();
                 highlighted = true;
+                thermoObj.daySelected("TH")
+
             }
         }
 
@@ -132,6 +148,8 @@ Rectangle {
             onClicked: {
                 uncheckDays();
                 highlighted = true;
+                thermoObj.daySelected("FR")
+
             }
         }
 
@@ -149,6 +167,8 @@ Rectangle {
             onClicked: {
                 uncheckDays();
                 highlighted = true;
+                thermoObj.daySelected("SA")
+
             }
         }
     }
@@ -176,6 +196,32 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 0
 
+        ListView {
+            id: dayListView
+            anchors.fill: parent
+            delegate: thermoEventDelegate
+            model: mThermoEventListModel
+        }
+
+        Rectangle {
+            id: thermoEventDelegate
+            height: 30
+
+            property string degreeMark: String.fromCharCode(176)
+
+            gradient: Gradient {
+                GradientStop {
+                    position: 0
+                    color: "#8cffffff"
+                }
+
+                GradientStop {
+                    position: 1
+                    color: "#8c000000"
+                }
+            }
+            border.color: "#808080"
+        }
     }
 
     ToolBar {

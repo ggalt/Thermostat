@@ -24,6 +24,7 @@ signals:
 public slots:
     Q_INVOKABLE void createNewThermoEvent(void);
     Q_INVOKABLE void addNewThermoEvent(void);
+    Q_INVOKABLE void daySelected(QString day);
     void addEvent(thermostatEvent *e);
 
 

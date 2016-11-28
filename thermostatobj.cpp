@@ -9,8 +9,10 @@
 #include <QQmlEngine>
 #include <QQmlContext>
 #include <QDebug>
+#include <QQuickItem>
 
 #include "thermostatobj.h"
+#include "thermoeventlistmodel.h"
 
 thermoStatObj::thermoStatObj(QWindow *parent) : QQuickView(parent)
 {
@@ -29,9 +31,16 @@ void thermoStatObj::Init(void)
     /// note, need to fill m_eventListModel from disk before starting
 
     engine()->rootContext()->setContextProperty("thermoObj", this);
+//    qmlRegisterType<thermoEventListModel>("net.galtfamily.thermoEventListModel",1,0,"thermoEventListModel");
+
     engine()->rootContext()->setContextProperty("thermoEventListModel", m_eventListModel);
     setSource((QUrl(QLatin1String("qrc:/qml/main.qml"))));
 //    setSource(QUrl(QLatin1String("qrc:/qml/ThermostatEventPage.qml")));
+
+//    QQuickItem *page2 = findChild<QQuickItem*>("addEventMainRec",Qt::FindChildrenRecursively);
+
+//    connect(page2, SIGNAL(selectDay(QString)),
+//            this, SLOT(daySelected(QString)));
     show();
 }
 
@@ -49,9 +58,13 @@ void thermoStatObj::createNewThermoEvent(void)
 
 void thermoStatObj::addNewThermoEvent(void)
 {
-
 }
 
+void thermoStatObj::daySelected(QString day)
+{
+    qDebug() << "*********************************" << day;
+
+}
 
 void thermoStatObj::addEvent( thermostatEvent *e)
 {
