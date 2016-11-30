@@ -1,6 +1,8 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
+import thermoEventListModel 1.0
+
 
 //ApplicationWindow {
 Rectangle {
@@ -11,6 +13,7 @@ Rectangle {
 
     property alias currentTemp: swPage1.curTemp
     property alias targetTemp: swPage1.targetTemp
+    property alias myEventModel: swPage2
 
     SwipeView {
         id: swipeView
@@ -27,7 +30,13 @@ Rectangle {
 
         Page2 {
             id:swPage2
-            objectName: "swPage2"
+//            property var eventModel
+            property alias eventModel: m_eventModel
+            ThermoEventListModel {
+                id: m_eventModel
+
+            }
+
         }
         onCurrentIndexChanged: {
             pageIndicator.currentIndex = swipeView.currentIndex;

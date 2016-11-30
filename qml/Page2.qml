@@ -9,15 +9,15 @@ Rectangle {
     height: 240
     width: 320
 
-    function selectDay(string day) {
-        switch(day) {
-        case "SU": {
-            uncheckDays();
-            btnSunday.highlighted=true;
-            break;
-        }
-    }
-    }
+//    function selectDay(string m_day) {
+//        switch(m_day) {
+//        case "SU": {
+//            uncheckDays();
+//            btnSunday.highlighted=true;
+//            break;
+//        }
+//    }
+//    }
 
     function addThermoEvent() {
         thermoObj.createNewThermoEvent()
@@ -200,7 +200,7 @@ Rectangle {
             id: dayListView
             anchors.fill: parent
             delegate: thermoEventDelegate
-            model: mThermoEventListModel
+            model: swPage2.eventModel
         }
 
         Rectangle {
