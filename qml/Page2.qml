@@ -198,9 +198,23 @@ Rectangle {
 
         ListView {
             id: dayListView
+            clip: true
             anchors.fill: parent
-            delegate: thermoEventDelegate
+//            delegate: thermoEventDelegate
+            delegate: thermoDelegate
             model: swPage2.eventModel
+            Rectangle {
+                id: thermoDelegate
+                height: 30
+                Text {
+                    id: dayOfTheWeektxt
+                    text: dayOfTheWeek
+                }
+                Text {
+                    id: startTimetxt
+                    text: startTime
+                }
+            }
         }
 
         Rectangle {

@@ -18,7 +18,6 @@
 thermoStatObj::thermoStatObj(QWindow *parent) : QQuickView(parent)
 {
     setObjectName("theromStatObj");
-    qmlRegisterType<thermoEventListModel>("thermoEventListModel",1,0,"ThermoEventListModel");
     m_eventListModel = new thermoEventListModel(this);
 }
 
@@ -35,6 +34,7 @@ void thermoStatObj::Init(void)
     engine()->rootContext()->setContextProperty("thermoObj", this);
 
     engine()->rootContext()->setContextProperty("myEventModel", QVariant::fromValue(m_eventListModel));
+//    engine()->rootContext()->setContextProperty("myEventModel", &this->m_eventListModel);
     setSource((QUrl(QLatin1String("qrc:/qml/main.qml"))));
     show();
 }

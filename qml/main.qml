@@ -31,11 +31,8 @@ Rectangle {
         Page2 {
             id:swPage2
 //            property var eventModel
-            property alias eventModel: m_eventModel
-            ThermoEventListModel {
-                id: m_eventModel
-
-            }
+//            property alias eventModel: m_eventModel
+            ThermoEventListModel {}
 
         }
         onCurrentIndexChanged: {

@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QDebug>
 #include "thermostatobj.h"
+#include "thermoeventlistmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,6 +14,8 @@ int main(int argc, char *argv[])
 
 //    QQmlApplicationEngine engine;
 //    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+
+    qmlRegisterType<thermoEventListModel>("thermoEventListModel",1,0,"ThermoEventListModel");
 
     thermoStatObj *thermo = new thermoStatObj();
     thermo->Init();

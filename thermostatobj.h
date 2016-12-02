@@ -18,6 +18,7 @@ public:
     ~thermoStatObj(void);
 
     void Init(void);
+    thermoEventListModel *m_eventListModel;
 
 signals:
 
@@ -33,7 +34,6 @@ private:
 
     thermoEventWindow *thermoEvent;
 //    QList<thermostatEvent*> m_thermoEventList;
-    thermoEventListModel *m_eventListModel;
 
 };
 
